@@ -10,13 +10,12 @@ public class Soldier {
         this.exp = exp;
         checkRank();
     }
-    //TODO death w generale pattern observer serializacja danych
-    public int rankUp() {
-        if (rank < 4 && exp > rank*5) {
-            return rank+1;
-            //TODO remove soldier w generale
+    //TODO death w generale pattern observer serializacja danych implements seriazable?
+    public void rankUp() {
+        if (rank < 4 && exp == rank*5) {
+            this.rank++;
+            this.exp = 1;
         }
-        return 0;
     }
     public int getStrength() {
         return rank * exp;
@@ -37,5 +36,14 @@ public class Soldier {
         if (!(rank >= 1 && rank <= 4)) {
             throw new IllegalArgumentException("Rank out of range");
         }
+    }
+    public void expUp() {
+        this.exp++;
+    }
+    public void expDown() {
+        this.exp--;
+    }
+    public String toString() {
+        return "Soldier [rank=" + rank + ", exp=" + exp + "]";
     }
 }

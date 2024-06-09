@@ -1,12 +1,14 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Vector;
 
 public class General {
     private int gold;
-    public ArrayList<Soldier> army;
-    public General(int gold, ArrayList<Soldier> army) {
+    public Vector<Soldier> army;
+    public General(int gold, Vector<Soldier> army) {
         this.gold = gold;
         this.army = army;
     }
@@ -15,7 +17,7 @@ public class General {
     }
     public General() {
         this.gold = 0;
-        this.army = new ArrayList<Soldier>();
+        this.army = new Vector<Soldier>();
     }
     public int getGold() {
         return gold;
@@ -23,21 +25,24 @@ public class General {
     public void setGold(int gold) {
         this.gold = gold;
     }
-    public ArrayList<Soldier> getArmy() {
+    public Vector<Soldier> getArmy() {
         return army;
     }
-    public void setArmy(ArrayList<Soldier> army) {
+    public void setArmy(Vector<Soldier> army) {
         this.army = army;
+    }
+    public Soldier getSoldier(int idx) {
+        return this.army.get(idx);
     }
     public void addSoldier(Soldier soldier) {
         this.army.add(soldier);
     }
-    public void removeSoldier(Soldier soldier) {
-        this.army.remove(soldier);
+    public void removeSoldier(int idx) {
+        this.army.remove(idx);
     }
     public List<Soldier> getRegiment(int id) {
         if(id >=0 && id < army.size()) {
-            return army.subList(0,id);
+            return army.subList(0,id+1);
         }
         return null;
     }
@@ -55,12 +60,10 @@ public class General {
         return total;
     }
     public void checkRanks() {
-        for (Soldier soldier : army) {
-            if(soldier.rankUp() != 0) {
-                int temp = soldier.getRank() + 1;
-                removeSoldier(soldier);
-                addSoldier(new Soldier(temp, 1));
-            }
+        Iterator<Soldier> it = army.iterator();
+        while(it.hasNext()) {
+            Soldier soldier = it.next();
+            soldier.rankUp();
         }
     }
     public int checkTraining() {
@@ -88,7 +91,7 @@ public class General {
         if(cost != 0) {
             this.gold -= cost;
             for (Soldier soldier : army) {
-                soldier.setExp(soldier.getExp()+1);
+                soldier.expUp();
             }
             checkRanks();
         }
@@ -98,9 +101,19 @@ public class General {
         if(cost != 0) {
             this.gold -= cost;
             for (Soldier soldier : regiment) {
-                soldier.setExp(soldier.getExp()+1);
+                soldier.expUp();
             }
             checkRanks();
         }
     }
+    public void checkDeath() {
+        Iterator<Soldier> it = army.iterator();
+        while(it.hasNext()) {
+            Soldier soldier = it.next();
+            if(soldier.getExp() == 0) {
+                it.remove();
+            }
+        }
+    }
+
 }
