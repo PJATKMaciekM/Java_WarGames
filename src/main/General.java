@@ -1,5 +1,7 @@
 package main;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -115,5 +117,21 @@ public class General {
             }
         }
     }
-
+    public void buySoldier(@NotNull Soldier soldier) {
+        if(soldier.getRank()*10 <= gold) {
+            army.add(soldier);
+            gold -= soldier.getRank()*10;
+        }else{
+            //TODO inform observer
+        }
+    }
+    public void attack(@NotNull General general2) {
+        if(getTotalStrength() > general2.getTotalStrength()) {
+            //TODO victory
+        } else if (getTotalStrength() < general2.getTotalStrength()) {
+            //TODO lost
+        }else {
+            //TODO shoot random
+        }
+    }
 }
