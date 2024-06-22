@@ -4,11 +4,10 @@ import main.General;
 import main.Soldier;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class General_Test {
@@ -16,8 +15,9 @@ public class General_Test {
     private Soldier soldier;
 
     @BeforeEach
-    void setUp() {
-        general = new General();
+    void setUp() throws IOException {
+        new FileWriter("Scribe1.txt", false).close();
+        general = new General("Scribe1.txt");
     }
 
     @Test
@@ -99,6 +99,58 @@ public class General_Test {
         general.checkDeath();
         assertEquals(2, general.getArmy().size());
     }
-
+    @Test
+    void testTraining_Reg() {
+        soldier = new Soldier(2, 2);
+        general.addSoldier(soldier);
+        soldier = new Soldier(1, 1);
+        general.addSoldier(soldier);
+        soldier = new Soldier(3, 2);
+        general.addSoldier(soldier);
+        soldier = new Soldier(4, 3);
+        general.addSoldier(soldier);
+        general.setGold(100);
+        general.training(general.getRegiment(1,2));
+        assertEquals(27, general.getTotalStrength());
+    }
+    @Test
+    void testbuySoldier() {
+        soldier = new Soldier(2, 2);
+        general.addSoldier(soldier);
+        soldier = new Soldier(1, 1);
+        general.addSoldier(soldier);
+        soldier = new Soldier(3, 2);
+        general.addSoldier(soldier);
+        general.setGold(100);
+        general.buySoldier(4);
+        assertEquals(15, general.getTotalStrength());
+    }
+    @Test
+    void testSave() {
+        soldier = new Soldier(2, 2);
+        general.addSoldier(soldier);
+        soldier = new Soldier(1, 1);
+        general.addSoldier(soldier);
+        soldier = new Soldier(3, 2);
+        general.addSoldier(soldier);
+        general.setGold(100);
+        general.buySoldier(4);
+        general.save("gen1.ser");
+        assertEquals(15, general.getTotalStrength());
+    }
+    @Test
+    void testLoad() {
+        soldier = new Soldier(2, 2);
+        general.addSoldier(soldier);
+        soldier = new Soldier(1, 1);
+        general.addSoldier(soldier);
+        soldier = new Soldier(3, 2);
+        general.addSoldier(soldier);
+        general.setGold(100);
+        general.buySoldier(4);
+        general.save("gen1.ser");
+        General general_test = general.load("gen1.ser");
+        assert general_test != null;
+        assertEquals(15, general_test.getTotalStrength());
+    }
 }
-

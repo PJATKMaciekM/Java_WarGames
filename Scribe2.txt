@@ -1,0 +1,6 @@
+General 2 Created, gold: 1000
+General 2 current army: [Soldier [rank=2, exp=2], Soldier [rank=3, exp=3], Soldier [rank=4, exp=4], Soldier [rank=1, exp=1], Soldier [rank=1, exp=2], Soldier [rank=1, exp=3], Soldier [rank=1, exp=4], Soldier [rank=1, exp=1], Soldier [rank=2, exp=1], Soldier [rank=2, exp=3], Soldier [rank=2, exp=4]]
+General 2 soldier death, lack of exp: Soldier [rank=1, exp=0]
+General 2 soldier death, lack of exp: Soldier [rank=1, exp=0]
+General 2 soldier death, lack of exp: Soldier [rank=2, exp=0]
+General 2 attacked and LOST, current gold: 900 army: [Soldier [rank=2, exp=1], Soldier [rank=3, exp=2], Soldier [rank=4, exp=3], Soldier [rank=1, exp=1], Soldier [rank=1, exp=2], Soldier [rank=1, exp=3], Soldier [rank=2, exp=2], Soldier [rank=2, exp=3]]

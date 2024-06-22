@@ -1,20 +1,23 @@
 package main;
 
-public class Soldier {
+import java.io.Serializable;
+
+public class Soldier implements Serializable {
     private int rank;
     private int exp;
-
 
     public Soldier(int rank, int exp) {
         this.rank = rank;
         this.exp = exp;
         checkRank();
     }
-    //TODO death w generale pattern observer serializacja danych implements seriazable?
-    public void rankUp() {
+    public boolean rankUp() {
         if (rank < 4 && exp == rank*5) {
             this.rank++;
             this.exp = 1;
+            return true;
+        } else {
+            return false;
         }
     }
     public int getStrength() {

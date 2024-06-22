@@ -1,0 +1,6 @@
+General 1 Created, gold: 1000
+General 1 current army: [Soldier [rank=2, exp=2], Soldier [rank=3, exp=3], Soldier [rank=4, exp=4], Soldier [rank=1, exp=1], Soldier [rank=1, exp=2], Soldier [rank=1, exp=3], Soldier [rank=1, exp=4], Soldier [rank=1, exp=1], Soldier [rank=2, exp=1], Soldier [rank=2, exp=3], Soldier [rank=2, exp=4]]
+General 1 soldier rankUp, now is: Soldier [rank=2, exp=1]
+General 1 completed training, gold: 980 army: [Soldier [rank=2, exp=3], Soldier [rank=3, exp=4], Soldier [rank=4, exp=5], Soldier [rank=1, exp=2], Soldier [rank=1, exp=3], Soldier [rank=1, exp=4], Soldier [rank=2, exp=1], Soldier [rank=1, exp=2], Soldier [rank=2, exp=2], Soldier [rank=2, exp=4], Soldier [rank=2, exp=5]]
+General 1 current gold: 1080
+General 1 soldier rankUp, now is: Soldier [rank=2, exp=1]
